@@ -21,7 +21,6 @@ jobs:
         shell: bash
         run: echo "BRANCH_NAME=$(git branch --show-current)" >> $GITHUB_OUTPUT
       - uses: octokit/request-action@v2.x
-        needs: [get_branch_name]
         if: ${{ inputs.dry_run == 'false' }}
         with:
           route: POST /repos/blakef/gha-testing/actions/workflows/sample/dispatches
@@ -30,4 +29,4 @@ jobs:
           client_payload: '{"version": "${{ inputs.version }}", "dry_run": "${{ inputs.drun_run }}"}'
           headers: '{"Authorization": "token ${{ secrets.A_GITHUB_TOKEN }}"}'
           # TODO: confirm how we map these
-          ref: ${{ needs.get_branch_name.outputs.BRANCH_NAME }}
+          ref: ${{ steps.get_branch_name.outputs.BRANCH_NAME }}
