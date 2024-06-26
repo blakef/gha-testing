@@ -18,4 +18,4 @@ jobs:
     steps:
       - name: Log out our information
         shell: bash
-        run: echo "Version: ${{ inputs.version }} + Dry Run: ${{ inputs.dry_run }}"
+        run: echo "Version ${{ inputs.version }} + Dry Run ${{ inputs.dry_run }}"
