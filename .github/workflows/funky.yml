@@ -23,7 +23,7 @@ jobs:
         shell: bash
         run: echo "BRANCH_NAME=$(git branch --show-current)" >> $GITHUB_OUTPUT
       - uses: octokit/request-action@v2.x
-        if: ${{ inputs.dry_run == 'false' }}
+        if: ${{ inputs.dry_run == false }}
         with:
           route: POST /repos/blakef/gha-testing/actions/workflows/sample/dispatches
           name: Trigger a Samples run
