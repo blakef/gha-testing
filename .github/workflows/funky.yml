@@ -26,10 +26,6 @@ jobs:
         if: ${{ inputs.dry_run == false }}
         with:
           route: POST /repos/blakef/gha-testing/actions/workflows/sample/dispatches
-          name: Trigger a Samples run
-          event_type: workflow_dispatch
-          client_payload: '{"version": "${{ inputs.version }}", "dry_run": "${{ inputs.drun_run }}"}'
-          # TODO: confirm how we map these
-          ref: ${{ steps.get_branch_name.outputs.BRANCH_NAME }}
+          body: '{"version": "${{ inputs.version }}", "dry_run": "${{ inputs.dry_run }}"}'
         env:
           GITHUB_TOKEN: ${{ secrets.A_GITHUB_TOKEN }}
