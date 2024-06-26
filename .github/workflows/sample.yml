@@ -1,0 +1,21 @@
+name: Sample Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Some payload"
+        type: string
+        required: true
+      dry_run:
+        description: "Run as a dry-run"
+        type: boolean
+        default: false
+
+jobs:
+  sample_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Log out our information
+        shell: bash
+        run: echo "Version: ${{ inputs.version }} + Dry Run: ${{ inputs.dry_run }}"
