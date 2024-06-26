@@ -29,6 +29,7 @@ jobs:
           name: Trigger a Samples run
           event_type: workflow_dispatch
           client_payload: '{"version": "${{ inputs.version }}", "dry_run": "${{ inputs.drun_run }}"}'
-          headers: '{"Authorization": "token ${{ secrets.A_GITHUB_TOKEN }}"}'
           # TODO: confirm how we map these
           ref: ${{ steps.get_branch_name.outputs.BRANCH_NAME }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.A_GITHUB_TOKEN }}
